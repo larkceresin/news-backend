@@ -27,13 +27,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(requestLogger)
 
-//app.options('*', cors())
+app.options('*', cors())
 
 app.post('/signup', createUser);
 app.post('/login', login);
-//app.use(auth);
-app.use('/users', auth, users);
-app.use('/articles', auth, articles);
+app.use(auth);
+app.use('/users', users);
+app.use('/articles', articles);
 app.get('*', (req, res) => {
   throw new NotFoundError('Requested resource not found');
 });

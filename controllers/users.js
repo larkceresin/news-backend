@@ -22,6 +22,13 @@ module.exports.createUser = (req, res, next) => {
   if (!isEmail(email)) {
     throw new ValidationError('invalid data passed to the methods for creating a user')
   };
+  let user = User.findOne({
+        email
+    });
+    if (user) {
+        return res.status(400).json({
+            msg: "User Already Exists"
+        })}
   bcrypt.hash(password, 10)
     .then((hash) => {
       User.create({ email, password: hash, name})
