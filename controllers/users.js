@@ -31,7 +31,8 @@ module.exports.createUser = (req, res, next) => {
             throw new ValidationError('invalid data passed to the methods for creating a user')
           } res.status(201).send({
             _id: user._id,
-            email: user.email
+            email: user.email,
+            name: user.name
           })
         })
         .catch(next)
