@@ -6,7 +6,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const users = require('./routes/users');
 const articles = require('./routes/articles');
-const {createUser, login} = require('./controllers/users');
+const { createUser, login } = require('./controllers/users');
 const auth = require('./middleware/auth');
 const NotFoundError = require('./middleware/errors/NotFoundError')
 const { requestLogger, errorLogger } = require('./middleware/logger');
@@ -31,9 +31,9 @@ app.options('*', cors())
 
 app.post('/signup', createUser);
 app.post('/login', login);
-app.use(auth);
-app.use('/users', users);
-app.use('/articles', articles);
+//app.use(auth);
+app.use('/users', auth, users);
+app.use('/articles', auth, articles);
 app.get('*', (req, res) => {
   throw new NotFoundError('Requested resource not found');
 });
