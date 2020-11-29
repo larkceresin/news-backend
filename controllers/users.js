@@ -22,7 +22,6 @@ module.exports.createUser = (req, res, next) => {
   if (!isEmail(email)) {
     throw new ValidationError('invalid data passed to the methods for creating a user')
   };
-
   bcrypt.hash(password, 10)
     .then((hash) => {
       User.create({ email, password: hash, name})
