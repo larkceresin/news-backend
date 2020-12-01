@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const validator = require('validator');
-//const ValidationError = require('../middleware/errors/ValidationError')
+const ValidationError = require('../middleware/errors/ValidationError');
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -10,23 +10,24 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: {
       validator: (v) => validator.isEmail(v),
-      message: 'Wrong email format'
-    }
+      message: 'Wrong email format',
+    },
   },
   password: {
     type: String,
     required: true,
     minlength: 8,
-    select: false
+    select: false,
   },
   name: {
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30
-  }
+    maxlength: 30,
+  },
 });
 
+// eslint-disable-next-line func-names
 userSchema.statics.findUserByCredentials = function (email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
@@ -36,11 +37,11 @@ userSchema.statics.findUserByCredentials = function (email, password) {
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
-            throw new ValidationError('Incorrect email or password')
+            throw new ValidationError('Incorrect email or password');
           }
           return user;
         });
     });
 };
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', userSchema);
