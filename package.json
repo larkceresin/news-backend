@@ -1,0 +1,43 @@
+{
+  "name": "news-backend",
+  "version": "1.0.0",
+  "description": "My backend for final project at Practicum x Yandex. Creating/authorizing users, and saving articles from another API for a news website",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larkceresin/news-backend.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Jenna Toff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/larkceresin/news-backend/issues"
+  },
+  "homepage": "https://github.com/larkceresin/news-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.5",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.16",
+    "nodemon": "^2.0.6",
+    "validator": "^13.1.17",
+    "winston": "^3.3.3"
+  }
+}
