@@ -7,4 +7,4 @@ GET /articles - lists all saved articles by current user logged in
 POST /articles - adds an article to saved.
 DELETE /articles/articleID - removed article from saved list through ID
 POST /signup creates a user (needs email, password, and name)
-POST /login validates user and returns a JWT.
+POST /signin validates user and returns a JWT.
